@@ -1,6 +1,8 @@
 import ContactForm from '../ContactForm/ContactForm';
 import SearchBox from '../SearchBox/SearchBox';
 import ContactList from '../ContactList/ContactList';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import Loader from '../Loader/Loader';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import css from './App.module.css';
@@ -20,7 +22,8 @@ export default function App() {
       <h1 className={css.title}>Phonebook</h1>
       <ContactForm />
       <SearchBox />
-      {isLoading && !error && <b>Request in progress...</b>}
+      {error && <ErrorMessage />}
+      {isLoading && !error && <Loader />}
       <ContactList />
     </div>
   );
